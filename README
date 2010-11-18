@@ -1,0 +1,90 @@
+PROJECT NAME:
+  TCO_Vendor_API
+
+RELEASE DATE:
+	2010/04/24
+
+VERSION: 1.0 beta
+	This PHP class file is being released as a beta to allow for
+  other developers to provide bug reports, feature requests or
+  comments with regard to this release.
+  
+  If no major issue have been filed within 90 days of the release
+  date of this class, I will upgrade the version to 1.0 stable.
+
+REQUIREMENTS:
+	PHP 5.x w/ cURL installed as part of the PHP installation.
+
+PROJECT DESCRIPTION:
+  Developed for use in PHP 5.x environments, this PHP class was
+  created to allow developers to access the API calls as released
+  by 2Checkout.com late 2009.
+  
+  The 2Checkout Vendor API documentation can be seen at this link;
+  http://www.2checkout.com/documentation/api/
+  
+  Each call has a very specific set of parameters and requirements
+  depending on the method being called.
+  
+  Any class method that requires parameters will take its parameters
+  in the form of an associative array. For instance,
+  
+  $params = array( 'sale_id' => '1234567890', 'invoice_id' => '2134567890' );
+  $api->detail_sale( $params );
+  
+  This class does not pre-validate your input because the API handles
+  reporting errors back for invalid parameters and such.
+  
+  This class was developed to simplify the curl apparatus that is
+  used to make the remote calls to 2Checkout.
+  
+  
+EXAMPLE USAGE:
+	Use of this class is quite simple as demonstrated below.
+  
+  <?php
+  define('API_USER', 'your_2co_username');
+	define('API_PASS', 'your_2co_api_password');
+	$format = 'json';
+
+	$api = new TCO_Vender_API(API_USER, API_PASS);
+	$api->set_format($format);
+	print $api->detail_contact_info();
+  ?>
+  
+  Successful response should look something like this;
+  
+  {
+   "response_code" : "OK",
+   "response_message" : "contact info retrieved",
+   "vendor_contact_info" : {
+      "customer_service_email" : "test@example.com",
+      "customer_service_phone" : "123-456-7890",
+      "customer_service_phone_ext" : "0",
+      "mailing_address_1" : "1234 5th Street",
+      "mailing_address_2" : "",
+      "mailing_address_id" : "1112223334",
+      "mailing_city" : "Columbus",
+      "mailing_country_code" : "USA",
+      "mailing_postal_code" : "43202",
+      "mailing_state" : "Ohio",
+      "office_email" : "office@example.com",
+      "office_phone" : "222-333-4444",
+      "office_phone_ext" : "0",
+      "physical_address_1" : "2345 Office Ave.",
+      "physical_address_2" : "",
+      "physical_address_id" : "4445556666",
+      "physical_city" : "Columbus",
+      "physical_country_code" : "USA",
+      "physical_postal_code" : "43202",
+      "physical_state" : "Ohio",
+      "vendor_id" : "1234567"
+   }
+	}
+
+CHANGE LOG:
+	04/24/2010 - Initial Beta Release
+
+	11/17/2010 - Full version release.
+		     Contains two additional calls.
+		     list_payments & detail_pending_payment
