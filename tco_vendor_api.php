@@ -1,26 +1,38 @@
 <?php
 /******************************************************************
+<<<<<<< HEAD:tco_vendor_api.php
  * 					File: TCO_Vendor_API  Copyright 2010 - Rik Davis
  * 			 Version: 1.0b
  * 				Author: Rik Davis
  * 			 License: GNU GPL
+=======
+ * File: TCO_Vendor_API  Copyright 2010 - Rik Davis
+ * Version: 1.0b
+ * Author: Rik Davis
+ * License: GNU GPL
+>>>>>>> 2Checkout Vendor API PHP Class:tco_vendor_api.php
  * License Terms: This file has been released & distrubted under
  *                the terms of the GNU General Public License.
+<<<<<<< HEAD:tco_vendor_api.php
  *								Please include this information when copying &
  *								redistrubuting.
+=======
+ *                Please include this information when copying &
+ *                redistrubuting.
+>>>>>>> 2Checkout Vendor API PHP Class:tco_vendor_api.php
  ******************************************************************/
 
 class TCO_Vendor_API {
 	# PUBLIC PROPERTIES
 	public $api_base_url = "https://www.2checkout.com/api/";
-	
+
 	# PRIVATE PROPERTIES
 	private $user;
 	private $pass;
 	private $format = 'xml';
 	private $accept = 'application';
-	
- /*!
+
+	/*!
 	* @function Class constructor that optionally allows for
 	* setting username & password during instantiation.
 	* @param string $user
@@ -32,7 +44,7 @@ class TCO_Vendor_API {
 		if(!function_exists('curl_init')) {
 			trigger_error('You must have curl enabled in your PHP installation to use this class.', E_ERROR);
 		}
-		
+
 		if(!function_exists('json_encode')) {
 			trigger_error('You must have JSON support enabled in your PHP installation to use this class.', E_ERROR);
 		}
@@ -40,7 +52,7 @@ class TCO_Vendor_API {
 		$this->set_credentials($user, $pass);
 	}
 
-/*!
+	/*!
 	* @function set_credentials
 	* @param string $user sets the class' user property
 	* @param string $pass sets the class' passw property
@@ -51,7 +63,7 @@ class TCO_Vendor_API {
 		$this->pass = $pass;
 	}
 
-/*!
+	/*!
 	* @function set_format
 	* @param string $type Sets the class' format property that return values should be displayed in
 	* @access public
@@ -68,15 +80,11 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Format must only be xml, json or html. (defaults to xml)'));
 		}
 	}
-	
-	function call_method_by_name($name) {
-		
-	}
-	
+
 	# BEGIN API CALLS
 
 	# ACCOUNT RELATED CALLS
- /**
+	/**
 	* @detail_company_info
 	* @param None
 	* @access public
@@ -86,7 +94,7 @@ class TCO_Vendor_API {
 		return $this->do_call($url_suffix);
 	}
 
- /**
+	/**
 	* detail_contact_info
 	* @param None
 	* @access public
@@ -96,7 +104,7 @@ class TCO_Vendor_API {
 		return $this->do_call($url_suffix);
 	}
 
- /**
+	/**
 	* list_payments
 	* @param None
 	* @access public
@@ -106,7 +114,7 @@ class TCO_Vendor_API {
 		return $this->do_call($url_suffix, $args);
 	}
 
- /**
+	/**
 	* detail_pending_payment
 	* @param None
 	* @access public
@@ -118,7 +126,7 @@ class TCO_Vendor_API {
 
 	# SALES RELATED CALLS
 
- /**
+	/**
 	* detail_contact_info
 	* @param Array $args
 	* @access public
@@ -129,7 +137,7 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Value passed in was not an array of at least one key/value pair.'));
 		} else {
 			return $this->do_call($url_suffix, $args);
-		}		
+		}
 	}
 
 	function detail_sale($args) {
@@ -138,7 +146,7 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Value passed in was not an array of at least one key/value pair.'));
 		} else {
 			return $this->do_call($url_suffix, $args);
-		}		
+		}
 	}
 
 	function mark_shipped($args) {
@@ -147,7 +155,7 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Value passed in was not an array of at least one key/value pair.'));
 		} else {
 			return $this->do_call($url_suffix, $args);
-		}		
+		}
 	}
 
 	function reauth($args) {
@@ -156,7 +164,7 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Value passed in was not an array of at least one key/value pair.'));
 		} else {
 			return $this->do_call($url_suffix, $args);
-		}		
+		}
 	}
 
 	function refund_invoice($args) {
@@ -165,7 +173,7 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Value passed in was not an array of at least one key/value pair.'));
 		} else {
 			return $this->do_call($url_suffix, $args);
-		}		
+		}
 	}
 
 	function refund_lineitem($args) {
@@ -174,7 +182,7 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Value passed in was not an array of at least one key/value pair.'));
 		} else {
 			return $this->do_call($url_suffix, $args);
-		}		
+		}
 	}
 
 	function stop_lineitem_recurring($args) {
@@ -183,7 +191,7 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Value passed in was not an array of at least one key/value pair.'));
 		} else {
 			return $this->do_call($url_suffix, $args);
-		}		
+		}
 	}
 
 	function update_lineitem_recurring($args) {
@@ -192,15 +200,15 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Value passed in was not an array of at least one key/value pair.'));
 		} else {
 			return $this->do_call($url_suffix, $args);
-		}		
+		}
 	}
 
- /**
+	/**
 	* @function create_comment
-	* @param array $args  'sale_id' 		 (required) 	=> 1234567890,
-	*											'sale_comment' (required) 	=> 'Test sale comment',
-	*											'cc_vendor' 	 (optional) 	=> 0 (default),
-	*											'cc_customer'  (optional) 	=> 0 (default)
+	* @param array $args  'sale_id'      (required) => 1234567890,
+	*                     'sale_comment' (required) => 'Test sale comment',
+	*                     'cc_vendor'    (optional) => 0 (default),
+	*                     'cc_customer'  (optional) => 0 (default)
 	* @access public
 	*/
 	function create_comment($args) {
@@ -220,7 +228,7 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Value passed in was not an array of at least one key/value pair.'));
 		} else {
 			return $this->do_call($url_suffix, $args);
-		}		
+		}
 	}
 
 	function update_coupon($args) {
@@ -229,7 +237,7 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Value passed in was not an array of at least one key/value pair.'));
 		} else {
 			return $this->do_call($url_suffix, $args);
-		}		
+		}
 	}
 
 	function list_coupons($args) {
@@ -238,7 +246,7 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Value passed in was not an array of at least one key/value pair.'));
 		} else {
 			return $this->do_call($url_suffix, $args);
-		}		
+		}
 	}
 
 	function detail_coupon($args) {
@@ -247,7 +255,7 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Value passed in was not an array of at least one key/value pair.'));
 		} else {
 			return $this->do_call($url_suffix, $args);
-		}		
+		}
 	}
 
 	function delete_coupon($args) {
@@ -256,7 +264,7 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Value passed in was not an array of at least one key/value pair.'));
 		} else {
 			return $this->do_call($url_suffix, $args);
-		}		
+		}
 	}
 
 	function create_option($args) {
@@ -265,7 +273,7 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Value passed in was not an array of at least one key/value pair.'));
 		} else {
 			return $this->do_call($url_suffix, $args);
-		}		
+		}
 	}
 
 	function update_option($args) {
@@ -274,7 +282,7 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Value passed in was not an array of at least one key/value pair.'));
 		} else {
 			return $this->do_call($url_suffix, $args);
-		}		
+		}
 	}
 
 	function list_options($args) {
@@ -283,7 +291,7 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Value passed in was not an array of at least one key/value pair.'));
 		} else {
 			return $this->do_call($url_suffix, $args);
-		}		
+		}
 	}
 
 	function detail_option($args) {
@@ -292,7 +300,7 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Value passed in was not an array of at least one key/value pair.'));
 		} else {
 			return $this->do_call($url_suffix, $args);
-		}		
+		}
 	}
 
 	function delete_option($args) {
@@ -301,7 +309,7 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Value passed in was not an array of at least one key/value pair.'));
 		} else {
 			return $this->do_call($url_suffix, $args);
-		}		
+		}
 	}
 
 	function create_product($args) {
@@ -310,7 +318,7 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Value passed in was not an array of at least one key/value pair.'));
 		} else {
 			return $this->do_call($url_suffix, $args);
-		}		
+		}
 	}
 
 	function update_product($args) {
@@ -319,7 +327,7 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Value passed in was not an array of at least one key/value pair.'));
 		} else {
 			return $this->do_call($url_suffix, $args);
-		}		
+		}
 	}
 
 	function list_products($args) {
@@ -328,7 +336,7 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Value passed in was not an array of at least one key/value pair.'));
 		} else {
 			return $this->do_call($url_suffix, $args);
-		}		
+		}
 	}
 
 	function detail_product($args) {
@@ -337,7 +345,7 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Value passed in was not an array of at least one key/value pair.'));
 		} else {
 			return $this->do_call($url_suffix, $args);
-		}		
+		}
 	}
 
 	function delete_product($args) {
@@ -346,13 +354,13 @@ class TCO_Vendor_API {
 			return $this->return_resp(array('Error' => 'Value passed in was not an array of at least one key/value pair.'));
 		} else {
 			return $this->do_call($url_suffix, $args);
-		}		
+		}
 	}
 	# END API CALLS
 
 	# PRIVATE METHODS
 
- /*!
+	/*!
 	* @function do_call
 	* @param array $contents An array where keys are nodes and values are the node data
 	* @access private
@@ -364,7 +372,6 @@ class TCO_Vendor_API {
 			$url = $this->api_base_url . $url_suffix;
 			$ch = curl_init($url);
 			curl_setopt($ch, CURLOPT_HEADER, 0);
-			
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array("Accept: {$this->accept}/{$this->format}"));
 			curl_setopt($ch, CURLOPT_POST, 1);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -380,7 +387,7 @@ class TCO_Vendor_API {
 		return $this->return_resp($resp);
 	}
 
- /*!
+	/*!
 	* @function return_resp
 	* @param array $contents An array where keys are nodes and values are the node data
 	* @access private
@@ -434,88 +441,87 @@ class TCO_Vendor_API {
  */
 class XmlConstruct extends XMLWriter
 {
-		private $formal = false;
-    /**
-     * Constructor.
-     * @param string $prm_rootElementName A root element's name of a current xml document
-     * @param string $prm_xsltFilePath Path of a XSLT file.
-     * @access public
-     * @param null
-     */
-    public function __construct($prm_rootElementName, $formal=false, $prm_xsltFilePath='') {
-				$this->formal = $formal;
-        $this->openMemory();
-        $this->setIndent(true);
-        $this->setIndentString(' ');
-				if($this->formal) {
+	private $formal = false;
+	/**
+	* Constructor.
+	* @param string $prm_rootElementName A root element's name of a current xml document
+	* @param string $prm_xsltFilePath Path of a XSLT file.
+	* @access public
+	* @param null
+	*/
+	public function __construct($prm_rootElementName, $formal=false, $prm_xsltFilePath='') {
+		$this->formal = $formal;
+		$this->openMemory();
+		$this->setIndent(true);
+		$this->setIndentString(' ');
+		if($this->formal) {
 		        $this->startDocument('1.0', 'UTF-8');
+		}
+
+	        if($prm_xsltFilePath) {
+			$this->writePi('xml-stylesheet', 'type="text/xsl" href="'.$prm_xsltFilePath.'"');
+		}
+
+		$this->startElement($prm_rootElementName);
+	}
+
+	/**
+	* Set an element with a text to a current xml document.
+	* @access public
+	* @param string $prm_elementName An element's name
+	* @param string $prm_ElementText An element's text
+	* @return null
+	*/
+	public function setElement($prm_elementName, $prm_ElementText) {
+		$this->startElement($prm_elementName);
+		$this->text($prm_ElementText);
+		$this->endElement();
+	}
+
+	/**
+	* Construct elements and texts from an array.
+	* The array should contain an attribute's name in index part
+	* and a attribute's text in value part.
+	* @access public
+	* @param array $prm_array Contains attributes and texts
+	* @return null
+	*/
+	public function fromArray($prm_array) {
+		if(is_array($prm_array)) {
+			foreach ($prm_array as $index => $element) {
+				if(is_array($element)) {
+					$this->startElement($index);
+					$this->fromArray($element);
+					$this->endElement();
 				}
+				else
+					$this->setElement($index, $element);
+			}
+		}
+	}
 
-        if($prm_xsltFilePath) {
-            $this->writePi('xml-stylesheet', 'type="text/xsl" href="'.$prm_xsltFilePath.'"');
-        }
-
-        $this->startElement($prm_rootElementName);
-    }
-
-    /**
-     * Set an element with a text to a current xml document.
-     * @access public
-     * @param string $prm_elementName An element's name
-     * @param string $prm_ElementText An element's text
-     * @return null
-     */
-    public function setElement($prm_elementName, $prm_ElementText) {
-        $this->startElement($prm_elementName);
-        $this->text($prm_ElementText);
-        $this->endElement();
-    }
-
-    /**
-     * Construct elements and texts from an array.
-     * The array should contain an attribute's name in index part
-     * and a attribute's text in value part.
-     * @access public
-     * @param array $prm_array Contains attributes and texts
-     * @return null
-     */
-    public function fromArray($prm_array) {
-      if(is_array($prm_array)) {
-        foreach ($prm_array as $index => $element) {
-          if(is_array($element)) {
-            $this->startElement($index);
-            $this->fromArray($element);
-            $this->endElement();
-          }
-          else
-            $this->setElement($index, $element);
-         
-        }
-      }
-    }
-
-    /**
-     * Return the content of a current xml document.
-     * @access public
-     * @param null
-     * @return string Xml document
-     */
-    public function getDocument() {
-        $this->endElement();
-				if($this->formal) {
+	/**
+	* Return the content of a current xml document.
+	* @access public
+	* @param null
+	* @return string Xml document
+	*/
+	public function getDocument() {
+		$this->endElement();
+		if($this->formal) {
 		        $this->endDocument();
-				}
-        return $this->outputMemory();
-    }
+		}
+		return $this->outputMemory();
+	}
 
-    /**
-     * Output the content of a current xml document.
-     * @access public
-     * @param null
-     */
-    public function output() {
-        #header('Content-type: text/xml');
-        return $this->getDocument();
-    }
+	/**
+	* Output the content of a current xml document.
+	* @access public
+	* @param null
+	*/
+	public function output() {
+		#header('Content-type: text/xml');
+		return $this->getDocument();
+	}
 }
 ?>
